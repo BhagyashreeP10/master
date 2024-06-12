@@ -1,0 +1,25 @@
+1 The Project involves containerizing the application, deploying it on kubernates, setting up CI/CD 
+pipelines with github actions, and securing it with TLS.
+1 Dokerization
+To containerize wisecow application, create a Dockerfile in the root of your repository. 
+Dockerfie
+# use an official Python runtime as a parent image
+FROM python:3.9-slim
+# set the working directory in the container
+WORKDIR /app
+# Copy the current directory contains into the contaner at app
+COPY . / app
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+# make port 80 available to the world outside this container 
+EXPOSE 80
+# Define environment variable
+ENV NAME Wisecow
+# Run app.py when the container launches
+CMD ["PYTHON","APP.PY]
+2.Kubernetes Deployment
+Create the Kubernetes manifest files to deploy the Wisecow application.
+Deployment Manifest (`deployment.yaml`)yaml
+apiVersion: apps/v1
+kind: Deployment
+
